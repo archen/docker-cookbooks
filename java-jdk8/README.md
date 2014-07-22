@@ -1,6 +1,6 @@
-docker-cookbooks
+java-jdk7
 ================
 
-Docker cookbooks
+Add java-jdk8 to the baseimage. Based on https://github.com/Krijger/docker-cookbooks/blob/master/jdk8-oracle/Dockerfile
 
-All cookbooks require a registry running on localhost at port 5000
+	docker build -t localhost:5000/java-jdk8 .
