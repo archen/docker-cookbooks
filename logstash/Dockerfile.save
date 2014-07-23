@@ -1,0 +1,25 @@
+FROM localhost:5000/java-jdk7
+MAINTAINER archen <archen.sol@gmail.com>
+
+ENV HOME /root
+CMD ["/sbin/my_init"]
+
+ENV LUMBERJACK_TAG MYTAG
+
+ENV ELASTICWORKERS 1
+
+RUN wget https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz -O /opt/logstash.tar.gz --no-check-certificate
+
+RUN mkdir /ssl
+ADD ssl/logstash-forwarder.crt /ssl/logstash-forwarder.crt
+ADD ssl/logstash-forwarder.key /ssl/logstash-forwarder.key
+ADD collectd-types.db /opt/collectd-types.db
+
+EXPOSE 514
+EXPOSE 5043
+EXPOSE 9200
+EXPOSE 9292
+EXPOSE 9300
+
+RUN mkdir /etc/service/logstash
+ADD logstash.sh /etc/service/logstash/run
