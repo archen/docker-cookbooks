@@ -15,5 +15,5 @@ RUN chown postgres:postgres /etc/postgresql/9.3/main/*.conf
 VOLUME ["/var/lib/postgresql"]
 EXPOSE 5432
 
-RUN mkdir /etc/service/logstash
-ADD run /etc/service/logstash/run
+RUN mkdir /etc/service/postgresql
+ADD run /etc/service/postgresql/run
