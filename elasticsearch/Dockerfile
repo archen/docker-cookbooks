@@ -17,6 +17,9 @@ VOLUME ["/data"]
 
 # Define working directory.
 WORKDIR /data
+RUN mkdir -p /data/elasticsearch
+ADD elasticsearch.yml /data/elasticsearch/elasticsearch.yml
+ADD logging.yml	/data/elasticsearch/logging.yml
 
 EXPOSE 9200
 EXPOSE 9300
